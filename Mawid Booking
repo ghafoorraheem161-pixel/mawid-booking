@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mawid — Quick Booking</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 440px; margin: 24px auto; padding: 16px; background: #f4f6f5; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    p { margin: 0 0 16px; color: #555; font-size: 14px; }
+    label { display: block; margin: 12px 0 6px; font-weight: bold; font-size: 14px; }
+    select, input, button { width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #ccc; font-size: 15px; box-sizing: border-box; }
+    button { margin-top: 16px; background: #15803d; color: #fff; border: none; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Edit the shop name, services, times, and WhatsApp number anytime -->
+    <h1>Mawid • Car Detailing</h1>
+    <p>Choose your service and time slot in seconds—no messy chat back-and-forth.</p>
+
+    <label for="service">Service</label>
+    <select id="service">
+      <option value="Sedan Wash">Sedan Wash</option>
+      <option value="SUV Wash">SUV Wash</option>
+      <option value="Full Interior & Exterior Detail">Full Interior & Exterior Detail</option>
+    </select>
+
+    <label for="slot">Time Slot (Mawid)</label>
+    <select id="slot">
+      <option value="4:00 PM">4:00 PM</option>
+      <option value="5:15 PM">5:15 PM</option>
+      <option value="6:30 PM">6:30 PM</option>
+      <option value="8:00 PM">8:00 PM</option>
+    </select>
+
+    <label for="name">Your Name</label>
+    <input id="name" type="text" placeholder="Enter your name" />
+
+    <button onclick="bookNow()">Send Booking on WhatsApp</button>
+  </div>
+
+  <script>
+    function bookNow() {
+      // Replace 97400000000 with the shop's WhatsApp number (country code + number, no + or spaces)
+      const phone = "97400000000";
+      const service = document.getElementById("service").value;
+      const slot = document.getElementById("slot").value;
+      const name = document.getElementById("name").value.trim() || "Customer";
+      const msg = `Assalamu Alaikum, I'm ${name}. Mawid request: ${service} at ${slot}.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+  </script>
+</body>
+</html>
